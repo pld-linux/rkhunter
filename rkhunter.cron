@@ -1,2 +1,3 @@
 #!/bin/sh
-/usr/sbin/rkhunter --cronjob | /bin/mail -s 'rkhunter Daily Run' root
+output=`/usr/sbin/rkhunter -c --quiet --nocolors`
+[ "$output" != "" ] && echo $output | /bin/mail -s 'rkhunter Daily Run' root
