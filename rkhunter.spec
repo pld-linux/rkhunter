@@ -1,5 +1,5 @@
-Summary:	Rootkit Hunter is a Rootkit Hunter :) _FIXMEEE_
-Summary(pl):	_FIXMEEE_
+Summary:	Rootkit Hunter
+Summary(pl):	Program do poszukiwania rootkitów
 Name:		rkhunter
 Version:	1.1.1
 Release:	0.10
@@ -11,25 +11,36 @@ Source1:	%{name}.cron
 Source2:	%{name}.conf
 Patch0:		%{name}-shell.patch
 URL:		http://www.rootkit.nl/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Rootkit scanner is scanning tool to ensure you for about 99.9%% you're
 clean of nasty tools. This tool scans for rootkits, backdoors and
 local exploits by running tests like:
-        - MD5 hash compare
-        - Look for default files used by rootkits
-        - Wrong file permissions for binaries
-        - Look for suspected strings in LKM and KLD modules
-        - Look for hidden files
-        - Optional scan within plaintext and binary files
+ - MD5 hash compare
+ - Look for default files used by rootkits
+ - Wrong file permissions for binaries
+ - Look for suspected strings in LKM and KLD modules
+ - Look for hidden files
+ - Optional scan within plaintext and binary files
 
 Rootkit Hunter is released as GPL licensed project and free for
 everyone to use.
 
 %description -l pl
-_FIXMEEEE_
+Skaner antyrootkitowy to narzêdzie skanuj±ce, aby upewniæ siê na
+99.9%%, ¿e jeste¶my wolni od brzydkich narzêdzi. To narzêdzie poszukuje
+rootkitów, backdoorów i lokalnych eksploitów wykonuj±c testy w rodzaju:
+ - porównywanie skrótów MD5
+ - poszukiwanie plików domy¶lnie u¿ywanych przez rootkity
+ - poszukiwanie niepoprawnych uprawnieñ dla binarek
+ - poszukiwanie podejrzanych ³añcuchów w modu³ach LKM i KLD
+ - poszukiwanie ukrytych plików
+ - opcjonalne przeszukiwanie plików tekstowych i binarnych
+
+Rootkit Hunter jest wydany na licencji GPL i darmowy do u¿ywania przez
+wszystkich.
 
 %prep
 %setup -q -n %{name}
