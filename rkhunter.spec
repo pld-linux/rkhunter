@@ -2,12 +2,14 @@ Summary:	Rootkit Hunter is a Rootkit Hunter :) _FIXMEEE_
 Summary(pl):	_FIXMEEE_
 Name:		rkhunter
 Version:	1.1.1
-Release:	0.9
+Release:	0.10
 License:	GPL
 Group:		Applications
 Source0:	http://downloads.rootkit.nl/%{name}-%{version}.tar.gz
 # Source0-md5:	89b588aecf35ce34fa5cb737890e37c8
 Source1:	%{name}.cron
+Source2:	%{name}.conf
+Patch0:		%{name}-shell.patch
 URL:		http://www.rootkit.nl/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
@@ -31,15 +33,16 @@ _FIXMEEEE_
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_sysconfdir}/cron.daily,%{_libdir}/%{name}/scripts,%{_var}/rkhunter/{db,tmp}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_sysconfdir}/cron.daily,%{_libdir}/%{name}/scripts,%{_var}/lib/%{name}/{db,tmp}}
 
 install files/rkhunter $RPM_BUILD_ROOT%{_sbindir}
-install files/*.dat $RPM_BUILD_ROOT%{_var}/rkhunter/db
+install files/*.dat $RPM_BUILD_ROOT%{_var}/lib/%{name}/db
 install files/*.pl $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
-install files/%{name}.conf $RPM_BUILD_ROOT%{_sysconfdir}
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/cron.daily/%{name}
 
 %clean
@@ -54,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/scripts
 %attr(750,root,root) %{_libdir}/%{name}/scripts/*.pl
-%dir %{_var}/rkhunter
-%dir %{_var}/rkhunter/db
-%dir %{_var}/rkhunter/tmp
-%attr(640,root,root) %{_var}/rkhunter/db/*.dat
+%dir %{_var}/lib/%{name}
+%dir %{_var}/lib/%{name}/db
+%attr(770,root,root) %dir %{_var}/lib/%{name}/tmp
+%attr(640,root,root) %{_var}/lib/%{name}/db/*.dat
