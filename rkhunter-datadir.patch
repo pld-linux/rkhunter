@@ -1,0 +1,54 @@
+--- files/rkhunter~	2004-08-10 22:38:31.000000000 +0200
++++ files/rkhunter	2004-08-10 22:44:12.000000000 +0200
+@@ -594,7 +594,7 @@
+     # If not available in configuration file, make it static
+     if [ "${TMPDIR}" = "" ]
+       then
+-        TMPDIR="${MYDIR}/lib/rkhunter/tmp"
++        TMPDIR="/var/lib/rkhunter/tmp"
+     fi
+ fi
+ 
+@@ -613,7 +613,7 @@
+     # If not available in configuration file, make it static
+     if [ "${DB_PATH}" = "" ]
+       then
+-        DB_PATH="${MYDIR}/lib/rkhunter/db"
++        DB_PATH="/var/lib/rkhunter/db"
+     fi
+ fi
+ 
+@@ -1915,12 +1915,12 @@
+ 	    
+ 	    # Only use Perl MD5 module if we have it installed
+ 	    # If we can find it then skip the md5(sum) utility
+-	    perlmd5installed=`${MYDIR}/lib/rkhunter/scripts/check_modules.pl | grep 'Digest::MD5 installed'`
+-	    perlsha1installed=`${MYDIR}/lib/rkhunter/scripts/check_modules.pl | grep 'Digest::SHA1 installed'`
++	    perlmd5installed=`${MYDIR}/share/rkhunter/scripts/check_modules.pl | grep 'Digest::MD5 installed'`
++	    perlsha1installed=`${MYDIR}/share/rkhunter/scripts/check_modules.pl | grep 'Digest::SHA1 installed'`
+ 
+ 	    if [ ! "${perlmd5installed}" = "" ]
+ 	      then
+-	        md5="${MYDIR}/lib/rkhunter/scripts/filehashmd5.pl"
++	        md5="${MYDIR}/share/rkhunter/scripts/filehashmd5.pl"
+ 		logtext "Info: ${perlmd5installed}" >> ${DEBUGFILE}
+ 		logtext "Info: Using Perl Digest::MD5 module instead of ${MD5BINARY}"
+ 	    fi
+@@ -3706,7 +3706,7 @@
+ 	  logtext "Start scanning for hidden files in ${I}..."
+ 
+ 	  if [ -d "${I}" ]; then
+-	    HIDDENDIRS=`${MYDIR}/lib/rkhunter/scripts/showfiles.pl ${I}`
++	    HIDDENDIRS=`${MYDIR}/share/rkhunter/scripts/showfiles.pl ${I}`
+ 	    logtext "Value of hiddendirs: ${HIDDENDIRS}"
+ 	  fi
+ 	
+@@ -4072,7 +4072,7 @@
+   then
+     displaytext "Running updater..."
+     displaytext ""
+-    ${MYDIR}/lib/rkhunter/scripts/check_update.sh ${CONFIGFILE} ${MIRRORFILE} ${DB_PATH} ${md5} ${DEBUGFILE}
++    ${MYDIR}/share/rkhunter/scripts/check_update.sh ${CONFIGFILE} ${MIRRORFILE} ${DB_PATH} ${md5} ${DEBUGFILE}
+     displaytext ""
+     displaytext "Ready."
+ fi
