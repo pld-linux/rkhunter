@@ -1,15 +1,7 @@
---- files/rkhunter~	2004-10-28 16:45:16.000000000 +0200
-+++ files/rkhunter	2004-11-10 09:59:18.297957280 +0100
-@@ -4267,7 +4267,7 @@
-         VERSION=""
-         case ${APPLICATION} in
-           clamd)
--                VERSION=`${I}/clamd --version | grep 'ClamAV version' | awk '{ print $5 }'`
-+                VERSION=`${I}/clamd clamd --version 2>&1 | cut -f 2 -d " " | cut -f 1 -d "/"`
-                 ;;
- 
-           exim)
-@@ -4283,11 +4283,7 @@
+diff -burN rkhunter.orig/files/rkhunter rkhunter/files/rkhunter
+--- rkhunter.orig/files/rkhunter	2004-12-28 21:09:38.014057080 +0100
++++ rkhunter/files/rkhunter	2004-12-28 21:12:42.290042872 +0100
+@@ -4368,11 +4368,7 @@
  #                VERSION=`${I}/mc -V | head -n 1 2> /tmp/mc.txt && cat /tmp/mc.txt | grep 'Midnight Commander' | sed 's/GNU Midnight Commander//' | awk '{ print $4 }' && rm -f /tmp/mc.txt`
  #                ;;
            named)
@@ -18,7 +10,7 @@
 -                  then
 -                    VERSION=`echo ${VERSION} | cut -d '-' -f1`
 -                fi
-+                VERSION=`${I}/named -v | awk '{ print $2 }'`
++	  	VERSION=`${I}/named -v | awk '{print $2}'`
                  ;;
  	  openssl)
  		VERSION=`${I}/openssl version | head -n 1 | cut -d' ' -f2`
