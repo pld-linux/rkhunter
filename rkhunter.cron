@@ -1,3 +1,2 @@
 #!/bin/sh
-output=`/usr/sbin/rkhunter -c --quiet --nocolors`
-[ "$output" != "" ] && echo $output | /bin/mail -s 'rkhunter Daily Run' root
+/usr/sbin/rkhunter -c --report-warnings-only --cronjob
