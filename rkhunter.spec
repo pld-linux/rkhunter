@@ -2,7 +2,7 @@ Summary:	Rootkit Hunter
 Summary(pl):	Program do poszukiwania rootkitów
 Name:		rkhunter
 Version:	1.1.8
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications
 Source0:	http://downloads.rootkit.nl/%{name}-%{version}.tar.gz
@@ -55,6 +55,7 @@ install -d $RPM_BUILD_ROOT{%{_sbindir},%{_sysconfdir}/cron.daily,%{_datadir}/%{n
 install files/rkhunter $RPM_BUILD_ROOT%{_sbindir}
 install files/*.dat $RPM_BUILD_ROOT%{_var}/lib/%{name}/db
 install files/*.pl $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
+install files/check_update.sh $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/cron.daily/%{name}
 
@@ -69,8 +70,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(750,root,root) %{_sysconfdir}/cron.daily/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/scripts
-%attr(750,root,root) %{_datadir}/%{name}/scripts/*.pl
+%attr(750,root,root) %{_datadir}/%{name}/scripts/*
 %dir %{_var}/lib/%{name}
 %dir %{_var}/lib/%{name}/db
 %attr(770,root,root) %dir %{_var}/lib/%{name}/tmp
-%attr(640,root,root) %{_var}/lib/%{name}/db/*.dat
+%attr(640,root,root) %verify(not size mtime md5) %{_var}/lib/%{name}/db/*.dat
