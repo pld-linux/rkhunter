@@ -1,12 +1,12 @@
 Summary:	Rootkit Hunter
 Summary(pl):	Program do poszukiwania rootkitów
 Name:		rkhunter
-Version:	1.1.1
+Version:	1.1.2
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://downloads.rootkit.nl/%{name}-%{version}.tar.gz
-# Source0-md5:	89b588aecf35ce34fa5cb737890e37c8
+# Source0-md5:	f580ee74e3cbcbe945bfd87e403f3145
 Source1:	%{name}.cron
 Source2:	%{name}.conf
 Patch0:		%{name}-shell.patch
