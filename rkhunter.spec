@@ -12,6 +12,7 @@ Source2:	%{name}.conf
 Patch0:		%{name}-datadir.patch
 URL:		http://www.rootkit.nl/
 Requires:	binutils
+Requires:	e2fsprogs
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
