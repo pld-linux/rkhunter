@@ -1,0 +1,20 @@
+--- rkhunter/files/rkhunter.fix	2004-07-21 00:24:29.126645888 +0200
++++ rkhunter/files/rkhunter	2004-07-21 00:23:00.295150328 +0200
+@@ -1730,7 +1730,7 @@
+ 	        if [ "${architecture}" = "" ]; then
+ 		    valid_os="0"
+ 		  else
+-		    full_osname="PLD ${version} (${architecture})"
++		    full_osname="${version} (${architecture})"
+ 		    valid_os="1"
+ 		fi
+ 	    fi
+@@ -1742,7 +1742,7 @@
+ 	# CPUBuilders Linux?
+ 	if [ -e "/etc/cpub-release" ]
+ 	  then
+-	    version=`cat /etc/cpub-release"`	  
++	    version=`cat "/etc/cpub-release"`	  
+ 	    full_osname="${version}"
+ 	    valid_os="1"
+ 	    logtext "Info: Found /etc/cpub-release"
