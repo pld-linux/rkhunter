@@ -1,7 +1,7 @@
 diff -burN rkhunter.orig/files/rkhunter rkhunter/files/rkhunter
---- rkhunter.orig/files/rkhunter	2004-12-28 21:09:38.014057080 +0100
-+++ rkhunter/files/rkhunter	2004-12-28 21:12:42.290042872 +0100
-@@ -4368,11 +4368,7 @@
+--- rkhunter.orig/files/rkhunter	2005-03-28 10:49:54.155301952 +0200
++++ rkhunter/files/rkhunter	2005-03-28 10:51:25.913352608 +0200
+@@ -4411,11 +4411,7 @@
  #                VERSION=`${I}/mc -V | head -n 1 2> /tmp/mc.txt && cat /tmp/mc.txt | grep 'Midnight Commander' | sed 's/GNU Midnight Commander//' | awk '{ print $4 }' && rm -f /tmp/mc.txt`
  #                ;;
            named)
@@ -10,7 +10,7 @@ diff -burN rkhunter.orig/files/rkhunter rkhunter/files/rkhunter
 -                  then
 -                    VERSION=`echo ${VERSION} | cut -d '-' -f1`
 -                fi
-+	  	VERSION=`${I}/named -v | awk '{print $2}'`
++		VERSION=`${I}/named -v | awk '{print $2}'`
+ 		TEST=`${I}/named -v | grep 'named'`
+ 		logtext "Debug: ${TEST}"
                  ;;
- 	  openssl)
- 		VERSION=`${I}/openssl version | head -n 1 | cut -d' ' -f2`
