@@ -2,7 +2,7 @@ Summary:	Rootkit Hunter
 Summary(pl):	Program do poszukiwania rootkitów
 Name:		rkhunter
 Version:	1.1.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications
 Source0:	http://downloads.rootkit.nl/%{name}-%{version}.tar.gz
@@ -10,6 +10,7 @@ Source0:	http://downloads.rootkit.nl/%{name}-%{version}.tar.gz
 Source1:	%{name}.cron
 Source2:	%{name}.conf
 Patch0:		%{name}-typo.patch
+Patch1:		%{name}-datadir.patch
 URL:		http://www.rootkit.nl/
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -45,14 +46,15 @@ wszystkich.
 %prep
 %setup -q -n %{name}
 %patch0 -p1
+%patch1 -p0
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_sysconfdir}/cron.daily,%{_libdir}/%{name}/scripts,%{_var}/lib/%{name}/{db,tmp}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_sysconfdir}/cron.daily,%{_datadir}/%{name}/scripts,%{_var}/lib/%{name}/{db,tmp}}
 
 install files/rkhunter $RPM_BUILD_ROOT%{_sbindir}
 install files/*.dat $RPM_BUILD_ROOT%{_var}/lib/%{name}/db
-install files/*.pl $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
+install files/*.pl $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/cron.daily/%{name}
 
@@ -65,9 +67,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(750,root,root) %{_sbindir}/*
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}.conf
 %attr(750,root,root) %{_sysconfdir}/cron.daily/%{name}
-%dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/scripts
-%attr(750,root,root) %{_libdir}/%{name}/scripts/*.pl
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/scripts
+%attr(750,root,root) %{_datadir}/%{name}/scripts/*.pl
 %dir %{_var}/lib/%{name}
 %dir %{_var}/lib/%{name}/db
 %attr(770,root,root) %dir %{_var}/lib/%{name}/tmp
