@@ -16,6 +16,7 @@ Requires:	binutils
 Requires:	coreutils
 Requires:	diffutils
 Requires:	e2fsprogs
+Requires:	wget
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
