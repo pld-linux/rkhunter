@@ -55,14 +55,14 @@ wszystkich.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_sysconfdir}/cron.daily,%{_datadir}/%{name}/scripts,%{_var}/lib/%{name}/{db,tmp}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},/etc/cron.daily,%{_datadir}/%{name}/scripts,%{_var}/lib/%{name}/{db,tmp}}
 
 install files/rkhunter $RPM_BUILD_ROOT%{_sbindir}
 install files/*.dat $RPM_BUILD_ROOT%{_var}/lib/%{name}/db
 install files/*.pl $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
 install files/check_update.sh $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/cron.daily/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/cron.daily/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -72,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc files/CHANGELOG files/README files/WISHLIST
 %attr(750,root,root) %{_sbindir}/*
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}.conf
-%attr(750,root,root) %{_sysconfdir}/cron.daily/%{name}
+%attr(750,root,root) /etc/cron.daily/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/scripts
 %attr(750,root,root) %{_datadir}/%{name}/scripts/*
