@@ -35,8 +35,9 @@ everyone to use.
 
 %description -l pl
 Skaner antyrootkitowy to narzêdzie skanuj±ce, aby upewniæ siê na
-99.9%%, ¿e jeste¶my wolni od brzydkich narzêdzi. To narzêdzie poszukuje
-rootkitów, backdoorów i lokalnych eksploitów wykonuj±c testy w rodzaju:
+99.9%%, ¿e jeste¶my wolni od brzydkich narzêdzi. To narzêdzie
+poszukuje rootkitów, backdoorów i lokalnych eksploitów wykonuj±c testy
+w rodzaju:
  - porównywanie skrótów MD5
  - poszukiwanie plików domy¶lnie u¿ywanych przez rootkity
  - poszukiwanie niepoprawnych uprawnieñ dla binarek
@@ -69,7 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc files/CHANGELOG files/README files/WISHLIST
 %attr(750,root,root) %{_sbindir}/*
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
 %attr(750,root,root) /etc/cron.daily/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/scripts
@@ -77,4 +78,4 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_var}/lib/%{name}
 %dir %{_var}/lib/%{name}/db
 %attr(770,root,root) %dir %{_var}/lib/%{name}/tmp
-%attr(640,root,root) %verify(not size mtime md5) %{_var}/lib/%{name}/db/*.dat
+%attr(640,root,root) %verify(not md5 mtime size) %{_var}/lib/%{name}/db/*.dat
