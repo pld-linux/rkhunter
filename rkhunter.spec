@@ -1,5 +1,5 @@
 Summary:	Rootkit Hunter
-Summary(pl):	Program do poszukiwania rootkitów
+Summary(pl.UTF-8):   Program do poszukiwania rootkitÃ³w
 Name:		rkhunter
 Version:	1.2.8
 Release:	1
@@ -33,19 +33,19 @@ local exploits by running tests like:
 Rootkit Hunter is released as GPL licensed project and free for
 everyone to use.
 
-%description -l pl
-Skaner antyrootkitowy to narzêdzie skanuj±ce, aby upewniæ siê na
-99.9%%, ¿e jeste¶my wolni od brzydkich narzêdzi. To narzêdzie
-poszukuje rootkitów, backdoorów i lokalnych eksploitów wykonuj±c testy
+%description -l pl.UTF-8
+Skaner antyrootkitowy to narzÄ™dzie skanujÄ…ce, aby upewniÄ‡ siÄ™ na
+99.9%%, Å¼e jesteÅ›my wolni od brzydkich narzÄ™dzi. To narzÄ™dzie
+poszukuje rootkitÃ³w, backdoorÃ³w i lokalnych eksploitÃ³w wykonujÄ…c testy
 w rodzaju:
- - porównywanie skrótów MD5
- - poszukiwanie plików domy¶lnie u¿ywanych przez rootkity
- - poszukiwanie niepoprawnych uprawnieñ dla binarek
- - poszukiwanie podejrzanych ³añcuchów w modu³ach LKM i KLD
- - poszukiwanie ukrytych plików
- - opcjonalne przeszukiwanie plików tekstowych i binarnych
+ - porÃ³wnywanie skrÃ³tÃ³w MD5
+ - poszukiwanie plikÃ³w domyÅ›lnie uÅ¼ywanych przez rootkity
+ - poszukiwanie niepoprawnych uprawnieÅ„ dla binarek
+ - poszukiwanie podejrzanych Å‚aÅ„cuchÃ³w w moduÅ‚ach LKM i KLD
+ - poszukiwanie ukrytych plikÃ³w
+ - opcjonalne przeszukiwanie plikÃ³w tekstowych i binarnych
 
-Rootkit Hunter jest wydany na licencji GPL i darmowy do u¿ywania przez
+Rootkit Hunter jest wydany na licencji GPL i darmowy do uÅ¼ywania przez
 wszystkich.
 
 %prep
