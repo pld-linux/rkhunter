@@ -1,5 +1,5 @@
 Summary:	Rootkit Hunter
-Summary(pl.UTF-8):   Program do poszukiwania rootkitów
+Summary(pl.UTF-8):	Program do poszukiwania rootkitów
 Name:		rkhunter
 Version:	1.2.8
 Release:	1
