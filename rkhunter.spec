@@ -10,7 +10,6 @@ Source0:	http://switch.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}
 # Source0-md5:	89a4628c6378fdf3331d5a43b975d967
 Source1:	%{name}.cron
 Source2:	%{name}.conf
-#Patch0:		%{name}-datadir.patch - patch is not applicable to 1.3.0
 URL:		http://www.rootkit.nl/projects/rootkit_hunter.html
 Requires:	binutils
 Requires:	coreutils
@@ -51,7 +50,6 @@ wszystkich.
 
 %prep
 %setup -q
-#%patch0 -p0
 
 %install
 rm -rf $RPM_BUILD_ROOT
