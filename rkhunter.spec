@@ -55,9 +55,10 @@ wszystkich.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},/etc/cron.daily,%{_datadir}/%{name}/scripts,%{_var}/lib/%{name}/{db,tmp}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},/etc/cron.daily,%{_datadir}/%{name}/scripts,%{_var}/lib/%{name}/{db,tmp},%{_var}/lib/%{name}/db/i18n}
 
 install files/rkhunter $RPM_BUILD_ROOT%{_sbindir}
+install files/i18n/* $RPM_BUILD_ROOT%{_var}/lib/%{name}/db/i18n
 install files/*.dat $RPM_BUILD_ROOT%{_var}/lib/%{name}/db
 install files/*.pl $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
 install files/check_update.sh $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
@@ -78,5 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(750,root,root) %{_datadir}/%{name}/scripts/*
 %dir %{_var}/lib/%{name}
 %dir %{_var}/lib/%{name}/db
+%dir %{_var}/lib/%{name}/db/i18n
 %attr(770,root,root) %dir %{_var}/lib/%{name}/tmp
 %attr(640,root,root) %verify(not md5 mtime size) %{_var}/lib/%{name}/db/*.dat
+%attr(640,root,root) %verify(not md5 mtime size) %{_var}/lib/%{name}/db/i18n/*
