@@ -5,8 +5,7 @@ Version:	1.3.0
 Release:	1
 License:	GPL
 Group:		Applications
-#OLD Source0:	http://downloads.rootkit.nl/%{name}-%{version}.tar.gz
-Source0:	http://switch.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/rkhunter/%{name}-%{version}.tar.gz
 # Source0-md5:	89a4628c6378fdf3331d5a43b975d967
 Source1:	%{name}.cron
 Source2:	%{name}.conf
@@ -76,8 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/%{name}/scripts
 %attr(750,root,root) %{_datadir}/%{name}/scripts/*
 %dir %{_var}/lib/%{name}
-%dir %{_var}/lib/%{name}/db
-%dir %{_var}/lib/%{name}/db/i18n
 %attr(770,root,root) %dir %{_var}/lib/%{name}/tmp
+%dir %{_var}/lib/%{name}/db
 %attr(640,root,root) %verify(not md5 mtime size) %{_var}/lib/%{name}/db/*.dat
+%dir %{_var}/lib/%{name}/db/i18n
 %attr(640,root,root) %verify(not md5 mtime size) %{_var}/lib/%{name}/db/i18n/*
