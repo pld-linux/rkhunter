@@ -1,16 +1,14 @@
 Summary:	Rootkit Hunter
 Summary(pl.UTF-8):	Program do poszukiwania rootkitów
 Name:		rkhunter
-Version:	1.3.0
+Version:	1.3.6
 Release:	1
 License:	GPL
 Group:		Applications
-#OLD Source0:	http://downloads.rootkit.nl/%{name}-%{version}.tar.gz
-Source0:	http://switch.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	89a4628c6378fdf3331d5a43b975d967
+Source0:	http://dl.sourceforge.net/rkhunter/%{name}-%{version}.tar.gz
+# Source0-md5:	41bd92b1ea0803401c4a45215c8293a2
 Source1:	%{name}.cron
 Source2:	%{name}.conf
-#Patch0:		%{name}-datadir.patch - patch is not applicable to 1.3.0
 URL:		http://www.rootkit.nl/projects/rootkit_hunter.html
 Requires:	binutils
 Requires:	coreutils
@@ -51,16 +49,15 @@ wszystkich.
 
 %prep
 %setup -q
-#%patch0 -p0
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},/etc/cron.daily,%{_datadir}/%{name}/scripts,%{_var}/lib/%{name}/{db,tmp}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},/etc/cron.daily,%{_datadir}/%{name}/scripts,%{_var}/lib/%{name}/{db,tmp},%{_var}/lib/%{name}/db/i18n}
 
 install files/rkhunter $RPM_BUILD_ROOT%{_sbindir}
+install files/i18n/* $RPM_BUILD_ROOT%{_var}/lib/%{name}/db/i18n
 install files/*.dat $RPM_BUILD_ROOT%{_var}/lib/%{name}/db
 install files/*.pl $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
-install files/check_update.sh $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/cron.daily/%{name}
 
@@ -69,7 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc files/CHANGELOG files/README files/WISHLIST
+%doc files/CHANGELOG files/README files/FAQ files/ACKNOWLEDGMENTS
 %attr(750,root,root) %{_sbindir}/*
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
 %attr(750,root,root) /etc/cron.daily/%{name}
@@ -77,6 +74,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/%{name}/scripts
 %attr(750,root,root) %{_datadir}/%{name}/scripts/*
 %dir %{_var}/lib/%{name}
-%dir %{_var}/lib/%{name}/db
 %attr(770,root,root) %dir %{_var}/lib/%{name}/tmp
+%dir %{_var}/lib/%{name}/db
 %attr(640,root,root) %verify(not md5 mtime size) %{_var}/lib/%{name}/db/*.dat
+%dir %{_var}/lib/%{name}/db/i18n
+%attr(640,root,root) %verify(not md5 mtime size) %{_var}/lib/%{name}/db/i18n/*
