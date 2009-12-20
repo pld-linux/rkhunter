@@ -1,12 +1,12 @@
 Summary:	Rootkit Hunter
 Summary(pl.UTF-8):	Program do poszukiwania rootkitów
 Name:		rkhunter
-Version:	1.3.4
+Version:	1.3.6
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://dl.sourceforge.net/rkhunter/%{name}-%{version}.tar.gz
-# Source0-md5:	31eaacc4d01ad138d1a4283f105088e6
+# Source0-md5:	41bd92b1ea0803401c4a45215c8293a2
 Source1:	%{name}.cron
 Source2:	%{name}.conf
 URL:		http://www.rootkit.nl/projects/rootkit_hunter.html
@@ -58,7 +58,6 @@ install files/rkhunter $RPM_BUILD_ROOT%{_sbindir}
 install files/i18n/* $RPM_BUILD_ROOT%{_var}/lib/%{name}/db/i18n
 install files/*.dat $RPM_BUILD_ROOT%{_var}/lib/%{name}/db
 install files/*.pl $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
-install files/check_update.sh $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/cron.daily/%{name}
 
@@ -67,7 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc files/CHANGELOG files/README files/WISHLIST
+%doc files/CHANGELOG files/README files/FAQ files/ACKNOWLEDGMENTS
 %attr(750,root,root) %{_sbindir}/*
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
 %attr(750,root,root) /etc/cron.daily/%{name}
