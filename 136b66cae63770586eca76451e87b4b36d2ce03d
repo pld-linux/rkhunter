@@ -1,0 +1,3 @@
+- var/name to var/lib/name
+- added patch0 witch ugly replace #!/bin/sh to #!/bin/bash
+- added rkhunter.conf
